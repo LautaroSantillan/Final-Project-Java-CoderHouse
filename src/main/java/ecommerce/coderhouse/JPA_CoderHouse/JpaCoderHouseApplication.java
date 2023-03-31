@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JpaCoderHouseApplication implements CommandLineRunner {
+public class JpaCoderHouseApplication {
 	@Autowired
 	AdressRepository adressRepository;
 
@@ -25,10 +25,9 @@ public class JpaCoderHouseApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JpaCoderHouseApplication.class, args);
-		System.out.println("1° Pre Entrega Finalizada");
 	}
 
-	@Override
+	/*@Override
 	public void run(String... args) throws Exception {
 
 		System.out.println("LISTA DE DIRECCIONES : " + adressRepository.findAll());
@@ -37,5 +36,5 @@ public class JpaCoderHouseApplication implements CommandLineRunner {
 		System.out.println("LISTA DE LOS DETALLES DE LAS FACTURAS : " + invoice_detailRepository.findAll());
 		System.out.println("LISTA DE PRODUCTOS : " + productRepository.findAll());
 
-	}
+	}*/
 }
