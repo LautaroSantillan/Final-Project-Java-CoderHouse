@@ -1,7 +1,7 @@
 package ecommerce.coderhouse.JPA_CoderHouse.controller;
 
 import ecommerce.coderhouse.JPA_CoderHouse.entities.Client;
-import ecommerce.coderhouse.JPA_CoderHouse.exception.ClientAlreadyExistsException;
+import ecommerce.coderhouse.JPA_CoderHouse.exception.ItAlreadyExistsException;
 import ecommerce.coderhouse.JPA_CoderHouse.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ public class ClientController {
     private ClientService clientService;
 
     @PostMapping(path = "/")
-    public ResponseEntity<Client> create(@RequestBody Client client) throws ClientAlreadyExistsException{
+    public ResponseEntity<Client> create(@RequestBody Client client) throws ItAlreadyExistsException {
         return new ResponseEntity<>(this.clientService.create(client), HttpStatus.OK);
     }
 

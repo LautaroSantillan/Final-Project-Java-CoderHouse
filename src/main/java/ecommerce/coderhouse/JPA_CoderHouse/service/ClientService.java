@@ -1,8 +1,8 @@
 package ecommerce.coderhouse.JPA_CoderHouse.service;
 
 import ecommerce.coderhouse.JPA_CoderHouse.entities.Client;
-import ecommerce.coderhouse.JPA_CoderHouse.exception.ClientAlreadyExistsException;
-import ecommerce.coderhouse.JPA_CoderHouse.exception.ClientNotFoundException;
+import ecommerce.coderhouse.JPA_CoderHouse.exception.ItAlreadyExistsException;
+import ecommerce.coderhouse.JPA_CoderHouse.exception.ItNotFoundException;
 import ecommerce.coderhouse.JPA_CoderHouse.exception.IdInvalitedException;
 import ecommerce.coderhouse.JPA_CoderHouse.repository.ClientRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -18,12 +18,12 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public Client create(Client newClient) throws ClientAlreadyExistsException{
+    public Client create(Client newClient) throws ItAlreadyExistsException {
         Optional<Client> clientOp = this.clientRepository.findByDocnumber(newClient.getDocnumber());
 
         if (clientOp.isPresent()){
             log.info("El cliente que está intentando agregar ya existe en la base de datos: " + newClient);
-            throw new ClientAlreadyExistsException("El cliente que está intentando agregar ya existe en la base de datos");
+            throw new ItAlreadyExistsException("El cliente que está intentando agregar ya existe en la base de datos");
         } else {
             return this.clientRepository.save(newClient);
         }
@@ -38,7 +38,7 @@ public class ClientService {
 
         if (clientOp.isEmpty()){
             log.info("El cliente con id " + id + "  no existe en la base de datos");
-            throw new ClientNotFoundException("El cliente no existe en la base de datos");
+            throw new ItNotFoundException("El cliente no existe en la base de datos");
         } else {
             return clientOp.get();
         }
@@ -56,7 +56,7 @@ public class ClientService {
 
         if (clientOp.isEmpty()){
             log.info("El cliente que intenta actualizar no existe en la base de datos");
-            throw new ClientNotFoundException("El cliente no existe en la base de datos");
+            throw new ItNotFoundException("El cliente no existe en la base de datos");
         } else {
             log.info("Cliente encontrado");
             Client clientDB = clientOp.get();
@@ -80,7 +80,7 @@ public class ClientService {
 
         if (clientOp.isEmpty()){
             log.info("El cliente que intenta actualizar no existe en la base de datos");
-            throw new ClientNotFoundException("El cliente no existe en la base de datos");
+            throw new ItNotFoundException("El cliente no existe en la base de datos");
         } else {
             log.info("El cliente con ID " + id + " se eliminó");
             clientRepository.delete(clientOp.get());

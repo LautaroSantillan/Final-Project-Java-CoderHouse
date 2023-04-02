@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GlobalHandlerException {
-    @ExceptionHandler(ClientAlreadyExistsException.class)
+    @ExceptionHandler(ItAlreadyExistsException.class)
     public ResponseEntity<?> clientAlreadyExistsException(Exception e){
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
 
-    @ExceptionHandler(ClientNotFoundException.class)
+    @ExceptionHandler(ItNotFoundException.class)
     public ResponseEntity<?> clientNotFoundException(Exception e){
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }

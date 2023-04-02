@@ -2,7 +2,7 @@ CREATE TABLE clients(
 id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
 name varchar(50) NOT NULL,
 lastname varchar(50) NOT NULL,
-docnumber varchar(11) NOT NULL,
+docnumber varchar(11) NOT NULL UNIQUE,
 id_adress int NOT NULL,
 CONSTRAINT fk_id_adress FOREIGN KEY(id_adress) REFERENCES adresses(id)
 );
@@ -37,7 +37,7 @@ CREATE TABLE products(
 id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
 name varchar(30) NOT NULL,
 description varchar(150) NOT NULL,
-code varchar(50) NOT NULL,
+code varchar(50) NOT NULL UNIQUE,
 stock int NOT NULL,
 price double NOT NULL
 );
