@@ -21,14 +21,14 @@ public class ClientController {
         return new ResponseEntity<>(this.clientService.create(client), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/")
-    public ResponseEntity<List<Client>> findAll(){
-        return new ResponseEntity<>(this.clientService.findAll(), HttpStatus.OK);
-    }
-
     @GetMapping(path = "/{id}")
     public ResponseEntity<Client> findById(@PathVariable Long id) throws Exception{
         return new ResponseEntity<>(this.clientService.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/")
+    public ResponseEntity<List<Client>> findAll(){
+        return new ResponseEntity<>(this.clientService.findAll(), HttpStatus.OK);
     }
 
     @PutMapping(path = "/{id}")

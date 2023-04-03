@@ -79,7 +79,7 @@ public class ClientService {
         Optional<Client> clientOp = this.clientRepository.findById(id);
 
         if (clientOp.isEmpty()){
-            log.info("El cliente que intenta actualizar no existe en la base de datos");
+            log.info("El cliente que intenta eliminar no existe en la base de datos");
             throw new ItNotFoundException("El cliente no existe en la base de datos");
         } else {
             log.info("El cliente con ID " + id + " se eliminó");
