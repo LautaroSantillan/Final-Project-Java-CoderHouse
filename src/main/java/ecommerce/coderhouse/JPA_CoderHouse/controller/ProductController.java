@@ -17,7 +17,7 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping(path = "/")
-    public ResponseEntity<Product> create(@RequestBody Product product) throws ItAlreadyExistsException{
+    public ResponseEntity<Product> create(@RequestBody Product product) throws Exception {
         return new ResponseEntity<>(this.productService.create(product), HttpStatus.OK);
     }
 
@@ -36,9 +36,9 @@ public class ProductController {
         return new ResponseEntity<>(this.productService.update(product, id), HttpStatus.OK);
     }
 
-    @DeleteMapping(path = "/{id}")
+    /*@DeleteMapping(path = "/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) throws Exception{
         productService.delete(id);
         return ResponseEntity.ok("Producto con ID " + id + " eliminado exitosamente");
-    }
+    }*/
 }

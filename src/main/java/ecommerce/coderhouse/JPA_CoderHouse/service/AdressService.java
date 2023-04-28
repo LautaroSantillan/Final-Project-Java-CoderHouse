@@ -5,6 +5,7 @@ import ecommerce.coderhouse.JPA_CoderHouse.exception.IdInvalitedException;
 import ecommerce.coderhouse.JPA_CoderHouse.exception.ItAlreadyExistsException;
 import ecommerce.coderhouse.JPA_CoderHouse.exception.ItNotFoundException;
 import ecommerce.coderhouse.JPA_CoderHouse.repository.AdressRepository;
+import ecommerce.coderhouse.JPA_CoderHouse.validator.AdressValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,14 @@ public class AdressService {
     @Autowired
     private AdressRepository adressRepository;
 
-    public Adress create(Adress newAdress) throws ItAlreadyExistsException{
+    public Adress create(Adress newAdress) throws Exception {
         Optional<Adress> adressOp = this.adressRepository.findById(newAdress.getId());
 
         if (adressOp.isPresent()){
             log.info("La dirección que intenta ingresar ya existe en la base de datos: " + newAdress);
             throw new ItAlreadyExistsException("La dirección ya existe en la base de datos");
         } else {
+            AdressValidator.adressValidator(newAdress);
             return this.adressRepository.save(newAdress);
         }
     }
@@ -71,7 +73,8 @@ public class AdressService {
         }
     }
 
-    public void delete(Long id) throws Exception{
+    //Comente el método DELETE porque en la realidad no se eliminan registros así
+    /*public void delete(Long id) throws Exception{
         log.info("ID ingresado: " + id);
         if (id <= 0){
             throw new IdInvalitedException("El ID ingresado no es valido");
@@ -86,5 +89,5 @@ public class AdressService {
             log.info("La dirección con ID " + id + " se elimino satisfactoriamente");
             adressRepository.delete(adressOp.get());
         }
-    }
+    }*/
 }

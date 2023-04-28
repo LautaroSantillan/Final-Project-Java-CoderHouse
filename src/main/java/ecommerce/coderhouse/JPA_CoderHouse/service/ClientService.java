@@ -5,6 +5,7 @@ import ecommerce.coderhouse.JPA_CoderHouse.exception.ItAlreadyExistsException;
 import ecommerce.coderhouse.JPA_CoderHouse.exception.ItNotFoundException;
 import ecommerce.coderhouse.JPA_CoderHouse.exception.IdInvalitedException;
 import ecommerce.coderhouse.JPA_CoderHouse.repository.ClientRepository;
+import ecommerce.coderhouse.JPA_CoderHouse.validator.ClientValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,14 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public Client create(Client newClient) throws ItAlreadyExistsException {
+    public Client create(Client newClient) throws Exception {
         Optional<Client> clientOp = this.clientRepository.findByDocnumber(newClient.getDocnumber());
 
         if (clientOp.isPresent()){
             log.info("El cliente que está intentando agregar ya existe en la base de datos: " + newClient);
             throw new ItAlreadyExistsException("El cliente que está intentando agregar ya existe en la base de datos");
         } else {
+            ClientValidator.clientValidator(newClient);
             return this.clientRepository.save(newClient);
         }
     }
@@ -58,6 +60,8 @@ public class ClientService {
             log.info("El cliente que intenta actualizar no existe en la base de datos");
             throw new ItNotFoundException("El cliente no existe en la base de datos");
         } else {
+            ClientValidator.clientValidator(newClient);
+
             log.info("Cliente encontrado");
             Client clientDB = clientOp.get();
 
@@ -70,7 +74,8 @@ public class ClientService {
         }
     }
 
-    public void delete(Long id) throws Exception{
+    //Comente el método DELETE porque en la realidad no se eliminan registros así
+    /*public void delete(Long id) throws Exception{
         log.info("ID ingresado: " + id);
         if (id <= 0){
             throw new IdInvalitedException("El ID ingresado no es valido");
@@ -85,5 +90,5 @@ public class ClientService {
             log.info("El cliente con ID " + id + " se eliminó");
             clientRepository.delete(clientOp.get());
         }
-    }
+    }*/
 }

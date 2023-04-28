@@ -18,7 +18,7 @@ public class InvoiceController {
     private InvoiceService invoiceService;
 
     @PostMapping(path = "/")
-    public ResponseEntity<Invoice> create(@RequestBody Invoice invoice) throws ItAlreadyExistsException{
+    public ResponseEntity<Invoice> create(@RequestBody Invoice invoice) throws Exception {
         return new ResponseEntity<>(this.invoiceService.create(invoice), HttpStatus.OK);
     }
 
@@ -32,14 +32,14 @@ public class InvoiceController {
         return new ResponseEntity<>(this.invoiceService.findAll(), HttpStatus.OK);
     }
 
-    @PutMapping(path = "/{id}")
+    /*@PutMapping(path = "/{id}")
     public ResponseEntity<Invoice> update(@RequestBody Invoice invoice, @PathVariable Long id) throws Exception{
         return new ResponseEntity<>(this.invoiceService.update(invoice, id), HttpStatus.OK);
-    }
+    }*/
 
-    @DeleteMapping(path = "/{id}")
+    /*@DeleteMapping(path = "/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) throws Exception{
         invoiceService.delete(id);
         return ResponseEntity.ok("Factura con ID " + id + " eliminado exitosamente");
-    }
+    }*/
 }

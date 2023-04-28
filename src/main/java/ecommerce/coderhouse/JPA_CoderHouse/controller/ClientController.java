@@ -17,11 +17,11 @@ public class ClientController {
     private ClientService clientService;
 
     @PostMapping(path = "/")
-    public ResponseEntity<Client> create(@RequestBody Client client) throws ItAlreadyExistsException {
+    public ResponseEntity<Client> create(@RequestBody Client client) throws Exception {
         return new ResponseEntity<>(this.clientService.create(client), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/{id}")
+    /*@GetMapping(path = "/{id}")
     public ResponseEntity<Client> findById(@PathVariable Long id) throws Exception{
         return new ResponseEntity<>(this.clientService.findById(id), HttpStatus.OK);
     }
@@ -34,11 +34,11 @@ public class ClientController {
     @PutMapping(path = "/{id}")
     public ResponseEntity<Client> update(@RequestBody Client client, @PathVariable Long id) throws Exception{
         return new ResponseEntity<>(this.clientService.update(client, id), HttpStatus.OK);
-    }
+    }*/
 
-    @DeleteMapping(path = "/{id}")
+    /*@DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) throws Exception{
         clientService.delete(id);
         return ResponseEntity.ok("Cliente con ID " + id + "eliminado exitosamente");
-    }
+    }*/
 }

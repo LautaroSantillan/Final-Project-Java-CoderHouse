@@ -1,27 +1,33 @@
 package ecommerce.coderhouse.JPA_CoderHouse.entities;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Data;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@Data
 @Table(name = "invoices")
 public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
+    @JsonBackReference("clientsEntities")
     @ManyToOne
     @JoinColumn(name = "id_client")
     private Client client;
-    private LocalDate created_at;
-    private Double total;
+    private LocalDate createdAt = LocalDate.now();
+    private Double total = 0.0;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "invoice")
+    private List<InvoiceDetail> invoiceDetails;
 
-    public Invoice() {
-    }
-
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -33,12 +39,12 @@ public class Invoice {
         this.client = client;
     }
 
-    public LocalDate getCreated_at() {
-        return created_at;
+    public LocalDate getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(LocalDate created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Double getTotal() {
@@ -49,13 +55,11 @@ public class Invoice {
         this.total = total;
     }
 
-    @Override
-    public String toString() {
-        return "Invoice{" +
-                "id='" + id + '\'' +
-                ", client='" + client + '\'' +
-                ", created_at='" + created_at + '\'' +
-                ", total='" + total +
-                '}';
+    public List<InvoiceDetail> getInvoiceDetails() {
+        return invoiceDetails;
+    }
+
+    public void setInvoiceDetails(List<InvoiceDetail> invoiceDetails) {
+        this.invoiceDetails = invoiceDetails;
     }
 }

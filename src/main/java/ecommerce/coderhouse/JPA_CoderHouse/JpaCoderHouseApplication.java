@@ -2,7 +2,6 @@ package ecommerce.coderhouse.JPA_CoderHouse;
 
 import ecommerce.coderhouse.JPA_CoderHouse.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -18,7 +17,7 @@ public class JpaCoderHouseApplication {
 	InvoiceRepository invoiceRepository;
 
 	@Autowired
-	Invoice_DetailRepository invoice_detailRepository;
+    InvoiceDetailRepository invoice_detailRepository;
 
 	@Autowired
 	ProductRepository productRepository;

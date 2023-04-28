@@ -1,7 +1,12 @@
 package ecommerce.coderhouse.JPA_CoderHouse.entities;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Data;
+
+import java.util.List;
 
 @Entity
+@Data
 @Table(name = "clients")
 public class Client {
     @Id
@@ -13,6 +18,10 @@ public class Client {
     @OneToOne
     @JoinColumn(name = "id_adress")
     private Adress adress;
+
+    @JsonManagedReference("clientsEntities")
+    @OneToMany(mappedBy = "client")
+    private List<Invoice> invoice;
 
     public Client() {
     }
@@ -56,6 +65,10 @@ public class Client {
     public void setAdress(Adress adress) {
         this.adress = adress;
     }
+
+    public List<Invoice> getInvoice() { return invoice; }
+
+    public void setInvoice(List<Invoice> invoice) { this.invoice = invoice; }
 
     @Override
     public String toString() {

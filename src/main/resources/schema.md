@@ -18,8 +18,8 @@ height varchar(15) NOT NULL
 CREATE TABLE invoices(
 id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
 id_client int NOT NULL,
-created_at datetime NOT NULL UNIQUE,
-total double NOT NULL,
+createdAt date NOT NULL UNIQUE,
+total double NOT NULL DEFAULT 0,
 CONSTRAINT fk_id_client FOREIGN KEY(id_client) REFERENCES clients(id)
 );
 

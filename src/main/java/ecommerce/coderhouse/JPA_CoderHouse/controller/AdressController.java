@@ -17,7 +17,7 @@ public class AdressController {
     private AdressService adressService;
 
     @PostMapping(path = "/")
-    public ResponseEntity<Adress> create(@RequestBody Adress adress) throws ItAlreadyExistsException{
+    public ResponseEntity<Adress> create(@RequestBody Adress adress) throws Exception {
         return new ResponseEntity<>(this.adressService.create(adress), HttpStatus.OK);
     }
 
@@ -36,9 +36,9 @@ public class AdressController {
         return new ResponseEntity<>(this.adressService.update(adress, id), HttpStatus.OK);
     }
 
-    @DeleteMapping(path = "/{id}")
+    /*@DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) throws Exception{
         adressService.delete(id);
         return ResponseEntity.ok("Dirección con ID " + id + " eliminado exitosamente");
-    }
+    }*/
 }

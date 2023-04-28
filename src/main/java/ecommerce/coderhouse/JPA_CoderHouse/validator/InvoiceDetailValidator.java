@@ -1,13 +1,13 @@
 package ecommerce.coderhouse.JPA_CoderHouse.validator;
 
-import ecommerce.coderhouse.JPA_CoderHouse.entities.Invoice_Detail;
+import ecommerce.coderhouse.JPA_CoderHouse.entities.InvoiceDetail;
 import ecommerce.coderhouse.JPA_CoderHouse.exception.MinCantException;
 import ecommerce.coderhouse.JPA_CoderHouse.exception.NullException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class InvoiceDetailException {
-    public static void invoiceDetailException(Invoice_Detail newInvoiceDetail) throws Exception{
+public class InvoiceDetailValidator {
+    public static void invoiceDetailValidator(InvoiceDetail newInvoiceDetail) throws Exception{
         if(newInvoiceDetail.getPrice()==null){
             log.info("El precio está vacio");
             throw new NullException("El precio no puede estar vacio");

@@ -16,7 +16,7 @@ public class InvoiceValidator {
             log.info("El total está en 0");
             throw new MinCantException("El total no puede ser menor o igual a 0");
         }
-        if(newInvoice.getCreated_at()==null){
+        if(newInvoice.getCreatedAt()==null){
             log.info("La fecha está vacia");
             throw new NullException("La fecha de creación de la factura no puede estar vacia");
         }
