@@ -73,22 +73,4 @@ public class ClientService {
             return this.clientRepository.save(clientDB);
         }
     }
-
-    //Comente el método DELETE porque en la realidad no se eliminan registros así
-    /*public void delete(Long id) throws Exception{
-        log.info("ID ingresado: " + id);
-        if (id <= 0){
-            throw new IdInvalitedException("El ID ingresado no es valido");
-        }
-
-        Optional<Client> clientOp = this.clientRepository.findById(id);
-
-        if (clientOp.isEmpty()){
-            log.info("El cliente que intenta eliminar no existe en la base de datos");
-            throw new ItNotFoundException("El cliente no existe en la base de datos");
-        } else {
-            log.info("El cliente con ID " + id + " se eliminó");
-            clientRepository.delete(clientOp.get());
-        }
-    }*/
 }

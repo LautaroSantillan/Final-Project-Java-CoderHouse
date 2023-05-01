@@ -35,10 +35,4 @@ public class AdressController {
     public ResponseEntity<Adress> update(@RequestBody Adress adress, @PathVariable Long id) throws Exception{
         return new ResponseEntity<>(this.adressService.update(adress, id), HttpStatus.OK);
     }
-
-    /*@DeleteMapping(path = "/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable Long id) throws Exception{
-        adressService.delete(id);
-        return ResponseEntity.ok("Dirección con ID " + id + " eliminado exitosamente");
-    }*/
 }

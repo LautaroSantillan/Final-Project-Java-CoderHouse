@@ -35,10 +35,4 @@ public class ProductController {
     public ResponseEntity<Product> update(@RequestBody Product product, @PathVariable Long id) throws Exception{
         return new ResponseEntity<>(this.productService.update(product, id), HttpStatus.OK);
     }
-
-    /*@DeleteMapping(path = "/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) throws Exception{
-        productService.delete(id);
-        return ResponseEntity.ok("Producto con ID " + id + " eliminado exitosamente");
-    }*/
 }

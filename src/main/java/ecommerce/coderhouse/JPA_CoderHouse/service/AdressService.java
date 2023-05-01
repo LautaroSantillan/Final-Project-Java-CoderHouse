@@ -72,22 +72,4 @@ public class AdressService {
             return this.adressRepository.save(adressDB);
         }
     }
-
-    //Comente el método DELETE porque en la realidad no se eliminan registros así
-    /*public void delete(Long id) throws Exception{
-        log.info("ID ingresado: " + id);
-        if (id <= 0){
-            throw new IdInvalitedException("El ID ingresado no es valido");
-        }
-
-        Optional<Adress> adressOp = this.adressRepository.findById(id);
-
-        if (adressOp.isEmpty()){
-            log.info("La dirección que intenta eliminar no existe");
-            throw new ItNotFoundException("La dirección no existe en la base de datos");
-        } else {
-            log.info("La dirección con ID " + id + " se elimino satisfactoriamente");
-            adressRepository.delete(adressOp.get());
-        }
-    }*/
 }

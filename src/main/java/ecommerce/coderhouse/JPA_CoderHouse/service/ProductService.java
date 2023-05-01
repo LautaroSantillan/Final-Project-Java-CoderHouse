@@ -77,26 +77,6 @@ public class ProductService {
         }
     }
 
-
-
-    //Comente el método DELETE porque en la realidad no se eliminan registros así
-    /*public void delete(Long id) throws Exception {
-        log.info("ID ingresado: " + id);
-        if (id <= 0) {
-            throw new IdInvalitedException("El ID ingresado no es valido");
-        }
-
-        Optional<Product> productOp = this.productRepository.findById(id);
-
-        if (productOp.isEmpty()) {
-            log.info("El producto que intenta actualizar no existe en la base de datos");
-            throw new ItNotFoundException("El producto no existe en la base de datos");
-        } else {
-            log.info("El producto con ID " + id + " se eliminó satisfactoriamente");
-            productRepository.delete(productOp.get());
-        }
-    }*/
-
     public void subtractStock(InvoiceDetail invoiceDetail) throws ItNotFoundException {
         Product product = productRepository.findById(invoiceDetail.getProduct().getId()).orElseThrow(() -> new ItNotFoundException("Este producto no existe"));
 

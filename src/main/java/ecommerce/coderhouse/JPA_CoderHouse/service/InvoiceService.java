@@ -88,46 +88,4 @@ public class InvoiceService {
     }
 
     public List<Invoice> findAll(){ return this.invoiceRepository.findAll(); }
-
-    /*public Invoice update(Invoice newInvoice, Long id) throws Exception{
-        log.info("ID ingresado: " + id);
-        if (id <= 0){
-            throw new IdInvalitedException("El ID ingresado no es valido");
-        }
-
-        Optional<Invoice> invoiceOp = this.invoiceRepository.findById(id);
-
-        if (invoiceOp.isEmpty()){
-            log.info("La factura que intenta actualizar no existe en la base de datos");
-            throw new ItNotFoundException("La factura no existe en la base de datos");
-        } else {
-            log.info("La factura fue encontrada");
-            Invoice invoiceDB = invoiceOp.get();
-
-            invoiceDB.setClient(newInvoice.getClient());
-            invoiceDB.setCreated_at(newInvoice.getCreated_at());
-            invoiceDB.setTotal(newInvoice.getTotal());
-
-            log.info("Factura actualizada: " + invoiceDB);
-            return this.invoiceRepository.save(invoiceDB);
-        }
-    }*/
-
-    //Comente el método DELETE porque en la realidad no se eliminan registros así
-    /*public void delete(Long id) throws Exception{
-        log.info("ID ingresado: " + id);
-        if (id <= 0) {
-            throw new IdInvalitedException("El ID ingresado no es valido");
-        }
-
-        Optional<Invoice> invoiceOp = this.invoiceRepository.findById(id);
-
-        if (invoiceOp.isEmpty()){
-            log.info("La factura que intenta eliminar no existe en la base de datos");
-            throw new ItNotFoundException("La factura no existe en la base de datos");
-        } else {
-            log.info("La factura con ID " + id + " se eliminó satisfactoriamente");
-            invoiceRepository.delete(invoiceOp.get());
-        }
-    }*/
 }

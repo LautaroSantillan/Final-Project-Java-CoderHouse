@@ -17,7 +17,7 @@ public class JpaCoderHouseApplication {
 	InvoiceRepository invoiceRepository;
 
 	@Autowired
-    InvoiceDetailRepository invoice_detailRepository;
+    InvoiceDetailRepository invoiceDetailRepository;
 
 	@Autowired
 	ProductRepository productRepository;
@@ -26,14 +26,4 @@ public class JpaCoderHouseApplication {
 		SpringApplication.run(JpaCoderHouseApplication.class, args);
 	}
 
-	/*@Override
-	public void run(String... args) throws Exception {
-
-		System.out.println("LISTA DE DIRECCIONES : " + adressRepository.findAll());
-		System.out.println("LISTA DE CLIENTES : " + clientRepository.findAll());
-		System.out.println("LISTA DE FACTURAS : " + invoiceRepository.findAll());
-		System.out.println("LISTA DE LOS DETALLES DE LAS FACTURAS : " + invoice_detailRepository.findAll());
-		System.out.println("LISTA DE PRODUCTOS : " + productRepository.findAll());
-
-	}*/
 }
